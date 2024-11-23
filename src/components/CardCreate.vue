@@ -6,13 +6,11 @@ const emit = defineEmits<{
 }>();
 
 const text = ref("");
-const tags = ref<string[]>([]);
 
 function onSubmit() {
     const tags = [...text.value.matchAll(/#\S*/g)].map(v => v[0].slice(1));
     emit('submit', text.value, tags);
     text.value = '';
-    tags.value = [];
 }
 </script>
 
@@ -21,8 +19,7 @@ function onSubmit() {
         <form
             class="card-body p-0"
             @submit.prevent="onSubmit"
-            @keypress.enter.prevent="onSubmit"
-            @keypress="onKeypress"
+            @keypress.enter.shift.prevent="onSubmit"
         >
             <textarea
                 class="textarea p-8 h-full"

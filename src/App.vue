@@ -3,7 +3,6 @@ import { ref } from 'vue';
 import Card from './components/Card.vue';
 import CardCreate from './components/CardCreate.vue';
 
-const text = ref("");
 const notes = ref<Note[]>([
   {
     id: '1',
